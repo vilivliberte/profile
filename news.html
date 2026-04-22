@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Liberté フランチャイズ加盟店オーナー向けのお知らせ・最新情報ページ。" />
+  <title>加盟店へのお知らせ | Liberté FC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="news.css" />
+</head>
+<body>
+
+  <!-- ===== BACK BUTTON ===== -->
+  <a href="index.html" class="back-btn" id="back-btn" aria-label="トップページへ戻る">
+    <span class="back-arrow">←</span>
+    <span>TOP</span>
+  </a>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <header class="page-header" id="page-header">
+    <div class="header-bg-orb header-bg-orb--1"></div>
+    <div class="header-bg-orb header-bg-orb--2"></div>
+    <div class="header-inner">
+      <div class="header-logo-wrap">
+        <img src="images/logo.png" alt="Liberté ロゴ" class="header-logo" />
+      </div>
+      <div class="header-label">
+        <span class="header-label-en">MEMBER NOTICES</span>
+        <h1 class="header-title-ja">加盟店へのお知らせ</h1>
+        <p class="header-subtitle"><span style="display:inline-block;">オーナー様向けの最新情報・</span><span style="display:inline-block;">重要連絡をお届けします</span></p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== FILTER TABS ===== -->
+  <div class="filter-bar" id="filter-bar" role="tablist" aria-label="カテゴリフィルター">
+    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" id="tab-all">すべて</button>
+    <button class="filter-btn" data-filter="important" role="tab" aria-selected="false" id="tab-important">🔴 重要</button>
+    <button class="filter-btn" data-filter="info" role="tab" aria-selected="false" id="tab-info">📘 お知らせ</button>
+    <button class="filter-btn" data-filter="data" role="tab" aria-selected="false" id="tab-data">📊 データ</button>
+    <button class="filter-btn" data-filter="other" role="tab" aria-selected="false" id="tab-other">💡 その他</button>
+  </div>
+
+  <!-- ===== MAIN NEWS LIST ===== -->
+  <main class="news-main" id="news-main">
+
+    <!-- ニュースコンテナ (JSで動的に追加) -->
+    <div id="news-container">
+      <div id="loading-state" style="text-align:center; padding:40px; color:var(--text-soft);">
+        <p>お知らせを読み込んでいます...</p>
+      </div>
+    </div>
+
+    <!-- Empty state (hidden by default, shown when no results) -->
+    <div class="empty-state" id="empty-state" style="display:none;" aria-live="polite">
+      <div class="empty-icon">🔍</div>
+      <p class="empty-text">該当するお知らせはありません</p>
+    </div>
+
+  </main>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="news-cta reveal" id="news-cta">
+    <div class="cta-inner">
+      <p class="cta-label">お困りのことがあれば</p>
+      <h2 class="cta-heading">本部へお気軽にご連絡ください</h2>
+      <p class="cta-desc">LINEグループもしくはメールにてご連絡いただけます。<br />オーナー様からのご質問・ご要望をお待ちしております。</p>
+      <div class="cta-buttons">
+        <a href="#" class="cta-btn cta-btn--line" id="cta-line-btn">
+          <span class="cta-btn-icon">💬</span>
+          <span>LINEで連絡する</span>
+        </a>
+        <a href="#" class="cta-btn cta-btn--mail" id="cta-mail-btn">
+          <span class="cta-btn-icon">✉️</span>
+          <span>メールで連絡する</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="news-footer" id="news-footer">
+    <img src="images/logo.png" alt="Liberté" class="footer-logo" />
+    <p class="footer-text">
+      ※株式会社4410は Liberté直営店とパーソナルジムを運営<br />
+      ※株式会社ViliVは Libertéフランチャイズ本部を運営<br /><br />
+      © 2024 Liberté Franchise. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- CSV Parser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="news.js"></script>
+</body>
+</html>
