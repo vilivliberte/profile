@@ -1,5 +1,5 @@
 /* ==========================================
-   Liberté FC - news.css
+   Liberte FC - news.css
    加盟店へのお知らせ ページスタイル
    Brand: Navy Blue × White × Sky Blue
    ========================================== */
@@ -273,7 +273,7 @@ body {
   padding: 12px 16px 32px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 28px;
 }
 
 /* ==========================================
