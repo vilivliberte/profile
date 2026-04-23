@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Liberte 営業・ご提案・お問い合わせフォーム" />
+  <title>お問い合わせ | Liberte FC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="contact-header">
+    <a href="index.html" class="back-btn">
+      <i class="fa-solid fa-chevron-left"></i> TOP
+    </a>
+    <img src="images/logo.png" alt="Liberte ロゴ" class="header-logo" />
+  </header>
+
+  <!-- Main -->
+  <main class="contact-container">
+    <h1 class="page-title">弊社への営業・ご提案</h1>
+    <p class="page-desc">
+      下記フォームよりお問い合わせください。<br>
+      送信ボタンを押すと、メールソフトが立ち上がります。
+    </p>
+
+    <!-- Form -->
+    <form class="contact-form" action="mailto:info@4410-corp.jp" method="post" enctype="text/plain">
+      
+      <!-- 御社名 -->
+      <div class="form-group">
+        <label class="form-label" for="company">
+          御社名 <span class="required-badge">必須</span>
+        </label>
+        <input type="text" id="company" name="御社名" class="form-input" placeholder="例：株式会社Liberte" required />
+      </div>
+
+      <!-- ご担当者名 -->
+      <div class="form-group">
+        <label class="form-label" for="name">
+          ご担当者名 <span class="required-badge">必須</span>
+        </label>
+        <input type="text" id="name" name="ご担当者名" class="form-input" placeholder="例：山田 太郎" required />
+      </div>
+
+      <!-- 電話番号 -->
+      <div class="form-group">
+        <label class="form-label" for="phone">
+          ご連絡先電話番号 <span class="required-badge">必須</span>
+        </label>
+        <input type="tel" id="phone" name="ご連絡先電話番号" class="form-input" placeholder="例：090-1234-5678" required />
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="form-group">
+        <label class="form-label" for="email">
+          ご連絡先メールアドレス <span class="required-badge">必須</span>
+        </label>
+        <input type="email" id="email" name="ご連絡先メールアドレス" class="form-input" placeholder="例：info@example.com" required />
+      </div>
+
+      <!-- ご連絡の目的 -->
+      <div class="form-group">
+        <label class="form-label" for="purpose">
+          ご連絡の目的 <span class="required-badge">必須</span>
+        </label>
+        <select id="purpose" name="ご連絡の目的" class="form-select" required>
+          <option value="" disabled selected>選択してください</option>
+          <option value="営業">営業</option>
+          <option value="提案">ご提案</option>
+          <option value="問い合わせ">お問い合わせ</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <!-- 目的の詳細 -->
+      <div class="form-group">
+        <label class="form-label" for="details">
+          目的の詳細 <span class="required-badge">必須</span>
+        </label>
+        <textarea id="details" name="目的の詳細" class="form-textarea" placeholder="詳細をご記入ください" required></textarea>
+      </div>
+
+      <!-- その他 -->
+      <div class="form-group">
+        <label class="form-label" for="other">
+          その他 <span class="optional-badge">任意</span>
+        </label>
+        <textarea id="other" name="その他" class="form-textarea" placeholder="その他ご要望等があればご記入ください"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">
+        <i class="fa-regular fa-paper-plane"></i> 送信する
+      </button>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="contact-footer">
+    <p class="footer-text">© 2024 Liberte Franchise. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
