@@ -22,8 +22,7 @@
   <main class="contact-container">
     <h1 class="page-title">弊社への営業・ご提案</h1>
     <p class="page-desc">
-      下記フォームよりお問い合わせください。<br>
-      送信ボタンを押すと、メールソフトが立ち上がります。
+      下記フォームよりお問い合わせください。
     </p>
 
     <!-- Form -->
@@ -105,31 +104,57 @@
   </footer>
 
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault(); // デフォルトのフォーム送信をキャンセル
       
-      const company = document.getElementById('company').value || '';
-      const name = document.getElementById('name').value || '';
-      const phone = document.getElementById('phone').value || '';
-      const email = document.getElementById('email').value || '';
-      const purpose = document.getElementById('purpose').value || '';
-      const details = document.getElementById('details').value || '';
-      const other = document.getElementById('other').value || '';
+      const form = e.target;
+      const btn = form.querySelector('.submit-btn');
+      const originalBtnHtml = btn.innerHTML;
 
-      // 件名と本文を作成
-      const subject = `【お問い合わせ】${company} ${name}様より`;
-      let body = `下記の内容でお問い合わせを受け付けました。\n\n`;
-      body += `【御社名】\n${company}\n\n`;
-      body += `【ご担当者名】\n${name}\n\n`;
-      body += `【ご連絡先電話番号】\n${phone}\n\n`;
-      body += `【ご連絡先メールアドレス】\n${email}\n\n`;
-      body += `【ご連絡の目的】\n${purpose}\n\n`;
-      body += `【目的の詳細】\n${details}\n\n`;
-      body += `【その他】\n${other}\n`;
+      // ボタンをローディング状態にする
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 送信中...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
 
-      // mailtoリンクを構築してリダイレクト（文字化けとセキュリティ警告を防止）
-      const mailtoUrl = `mailto:info@4410-corp.jp?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
+      // =========================================================
+      // 👇 ここに外部フォームサービス（Formspreeなど）のURLを設定します 👇
+      // 例: const endpoint = 'https://formspree.io/f/xxxxxxxx';
+      // =========================================================
+      const endpoint = 'https://formspree.io/f/xbdqpqkk';
+      
+      const formData = new FormData(form);
+
+      try {
+        if (!endpoint) {
+          alert('【開発者からのメッセージ】\n裏側で直接メールを送信するには、Formspreeなどの外部フォームサービスのエンドポイントURLの設定が必要です。\n（ブラウザの仕様上、HTML単体での直接メール送信はできません）');
+          btn.innerHTML = originalBtnHtml;
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          return;
+        }
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          alert('お問い合わせを送信しました！\n（実際はここに「送信完了画面」を出すなどのアレンジも可能です）');
+          form.reset(); // フォームを空にする
+        } else {
+          alert('送信に失敗しました。時間をおいて再度お試しください。');
+        }
+      } catch (error) {
+        alert('エラーが発生しました。通信環境をご確認ください。');
+      } finally {
+        // ボタンを元の状態に戻す
+        btn.innerHTML = originalBtnHtml;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      }
     });
   </script>
 </body>
