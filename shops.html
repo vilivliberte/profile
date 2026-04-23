@@ -74,65 +74,85 @@
     }
     /* 出店予定セクションのデザイン */
     .upcoming-section {
-      margin-top: 48px;
-      background: var(--white);
+      margin-top: 60px;
+      background: linear-gradient(145deg, #ffffff 0%, #f8faff 100%);
       border-radius: var(--radius);
-      padding: 32px 24px;
-      box-shadow: var(--shadow-sm);
-      border: 1.5px solid rgba(30,58,138,0.08);
+      padding: 40px 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(30,58,138,0.06);
       display: none; /* 初期は非表示 */
       width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .upcoming-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy-dark), var(--navy-light));
     }
     .upcoming-section-title {
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 800;
       color: var(--navy-dark);
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      letter-spacing: 0.05em;
     }
     .upcoming-section-title::before {
       content: '\f0a1'; /* fa-bullhorn */
       font-family: "Font Awesome 6 Free";
       font-weight: 900;
-      color: var(--accent);
+      color: var(--navy-light);
+      font-size: 1.4rem;
     }
     .upcoming-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
     }
     .upcoming-item {
       display: flex;
-      align-items: center;
-      background: var(--off-white);
-      padding: 16px 20px;
-      border-radius: 8px;
-      border-left: 4px solid var(--navy-light);
-      gap: 16px;
+      flex-direction: column;
+      background: var(--white);
+      padding: 20px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(30,58,138,0.04);
+      border: 1px solid rgba(30,58,138,0.08);
+      position: relative;
+      transition: all 0.3s ease;
     }
-    @media (max-width: 500px) {
-      .upcoming-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
+    .upcoming-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(30,58,138,0.08);
+      border-color: var(--navy-light);
     }
     .upcoming-item-area {
-      font-weight: 700;
-      color: var(--navy-dark);
-      font-size: 0.95rem;
-      min-width: 140px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--navy-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .upcoming-item-area::before {
+      content: '\f3c5'; /* fa-location-dot */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
     }
     .upcoming-item-loc {
-      font-weight: 600;
-      color: var(--text-dark);
-      font-size: 0.9rem;
-      flex: 1;
+      font-weight: 700;
+      color: var(--navy-dark);
+      font-size: 1.1rem;
+      line-height: 1.4;
     }
     .loading-spinner {
       text-align: center;
