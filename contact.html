@@ -27,7 +27,7 @@
     </p>
 
     <!-- Form -->
-    <form class="contact-form" action="mailto:info@4410-corp.jp" method="post" enctype="text/plain">
+    <form class="contact-form" id="contactForm">
       
       <!-- 御社名 -->
       <div class="form-group">
@@ -104,5 +104,33 @@
     <p class="footer-text">© 2024 Liberte Franchise. All rights reserved.</p>
   </footer>
 
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // デフォルトのフォーム送信をキャンセル
+      
+      const company = document.getElementById('company').value || '';
+      const name = document.getElementById('name').value || '';
+      const phone = document.getElementById('phone').value || '';
+      const email = document.getElementById('email').value || '';
+      const purpose = document.getElementById('purpose').value || '';
+      const details = document.getElementById('details').value || '';
+      const other = document.getElementById('other').value || '';
+
+      // 件名と本文を作成
+      const subject = `【お問い合わせ】${company} ${name}様より`;
+      let body = `下記の内容でお問い合わせを受け付けました。\n\n`;
+      body += `【御社名】\n${company}\n\n`;
+      body += `【ご担当者名】\n${name}\n\n`;
+      body += `【ご連絡先電話番号】\n${phone}\n\n`;
+      body += `【ご連絡先メールアドレス】\n${email}\n\n`;
+      body += `【ご連絡の目的】\n${purpose}\n\n`;
+      body += `【目的の詳細】\n${details}\n\n`;
+      body += `【その他】\n${other}\n`;
+
+      // mailtoリンクを構築してリダイレクト（文字化けとセキュリティ警告を防止）
+      const mailtoUrl = `mailto:info@4410-corp.jp?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    });
+  </script>
 </body>
 </html>
