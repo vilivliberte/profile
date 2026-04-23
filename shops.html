@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>店舗一覧 | Liberte FC</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="contact.css" /> <!-- Reuse base layout styles -->
+  <style>
+    /* Specific styles for shop grid */
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .shop-card {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      border: 1.5px solid rgba(30,58,138,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .shop-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy-dark), var(--navy));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .shop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--navy-light);
+    }
+    .shop-card:hover::after {
+      opacity: 1;
+    }
+    .shop-area-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .shop-count-wrap {
+      background: var(--sky-light);
+      padding: 10px 24px;
+      border-radius: 40px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .shop-count {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .shop-count-label {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      font-weight: 600;
+    }
+    .loading-spinner {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--navy);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="contact-header">
+    <a href="index.html" class="back-btn">
+      <i class="fa-solid fa-chevron-left"></i> TOP
+    </a>
+    <img src="images/logo.png" alt="Liberte ロゴ" class="header-logo" />
+  </header>
+
+  <main class="contact-container">
+    <h1 class="page-title">全国の店舗エリア</h1>
+    <p class="page-desc">
+      全国へ展開中のLiberte加盟店エリア一覧です。<br>
+      各エリアをクリックすると、公式サイトの店舗詳細へ遷移します。
+    </p>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-spinner">
+      <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+      <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600;">最新の店舗情報を読み込んでいます...</p>
+    </div>
+
+    <!-- Shop Grid -->
+    <div id="shop-container" class="shop-grid" style="display: none;">
+      <!-- JS will dynamically inject shop cards here -->
+    </div>
+  </main>
+
+  <footer class="contact-footer">
+    <p class="footer-text">© 2024 Liberte Franchise. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // 公式サイト（liberte-salon.net）はCloudflare等のセキュリティで保護されており、
+    // ブラウザからの直接の自動取得（スクレイピング）がブロックされるため、
+    // 現在の最新データを手動で設定しています。
+    const shopData = [
+      { name: '北海道・東北エリア', count: '1', link: 'https://liberte-salon.net/shop/area/hokkaido-tohoku/' },
+      { name: '関東エリア', count: '0', link: '#' },
+      { name: '中部エリア', count: '8', link: 'https://liberte-salon.net/shop/area/chubu/' },
+      { name: '近畿エリア', count: '0', link: '#' },
+      { name: '中国・四国エリア', count: '3', link: 'https://liberte-salon.net/shop/area/chugoku-shikoku/' },
+      { name: '九州・沖縄エリア', count: '0', link: '#' }
+    ];
+
+    function loadShops() {
+      const container = document.getElementById('shop-container');
+      const loading = document.getElementById('loading');
+
+      // カードを生成
+      shopData.forEach(item => {
+        const card = document.createElement('a');
+        card.className = 'shop-card';
+        card.href = item.link;
+        if (item.link !== '#') {
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+        }
+        
+        card.innerHTML = `
+          <div class="shop-area-name">${item.name}</div>
+          <div class="shop-count-wrap">
+            <span class="shop-count">${item.count}</span>
+            <span class="shop-count-label">店舗</span>
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+
+      // ローディングを非表示にし、一覧を表示
+      setTimeout(() => {
+        loading.style.display = 'none';
+        container.style.display = 'grid';
+      }, 400); // 少しだけローディングアニメーションを見せる演出
+    }
+
+    // ページ読み込み時に実行
+    document.addEventListener('DOMContentLoaded', loadShops);
+  </script>
+</body>
+</html>
