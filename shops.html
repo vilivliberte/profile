@@ -72,6 +72,35 @@
       color: var(--text-mid);
       font-weight: 600;
     }
+    /* 出店予定のデザイン */
+    .upcoming-box {
+      margin-top: 16px;
+      background: #f0fdf4; /* 薄い緑色でポジティブな印象に */
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+    .shop-card:hover .upcoming-box {
+      background: #dcfce7;
+      border-color: #86efac;
+    }
+    .upcoming-label {
+      font-size: 0.65rem;
+      color: #166534;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .upcoming-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #15803d;
+    }
     .loading-spinner {
       text-align: center;
       padding: 60px 20px;
@@ -112,9 +141,7 @@
   </footer>
 
   <script>
-    // 公式サイト（liberte-salon.net）はCloudflare等のセキュリティで保護されており、
-    // ブラウザからの直接の自動取得（スクレイピング）がブロックされるため、
-    // 現在の最新データを手動で設定しています。
+    // 公式サイトの店舗数は手動設定（Cloudflareブロック対策）
     const shopData = [
       { name: '北海道・東北エリア', count: '1', link: 'https://liberte-salon.net/shop/area/hokkaido-tohoku/' },
       { name: '関東エリア', count: '0', link: '#' },
@@ -124,9 +151,45 @@
       { name: '九州・沖縄エリア', count: '0', link: '#' }
     ];
 
-    function loadShops() {
+    // スプレッドシートのCSV公開URL
+    const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpEBk3B-adUqt5KpcX83PsMozK-UwFx5e2BqjcAhc3w-Bi_xZUUqlkE1B347K-JFzC23IhuFAuQloJ/pub?output=csv';
+
+    // CSVをパースして { '関東エリア': '東京・神奈川', ... } の辞書を作る関数
+    async function fetchUpcomingData() {
+      try {
+        const res = await fetch(SPREADSHEET_CSV_URL);
+        if (!res.ok) return {};
+        const csvText = await res.text();
+        
+        // 簡単なCSVパース処理（改行で分割、カンマで分割）
+        const rows = csvText.split('\\n');
+        const upcomingMap = {};
+        
+        rows.forEach(row => {
+          const cols = row.split(',').map(col => col.replace(/^"|"$/g, '').trim());
+          // A列にエリア名、B列に出店予定地域が入っている想定
+          if (cols.length >= 2) {
+            const areaName = cols[0];
+            const upcomingLocations = cols[1];
+            // ヘッダー行や空行を除外
+            if (areaName && upcomingLocations && !areaName.includes('エリア名')) {
+              upcomingMap[areaName] = upcomingLocations;
+            }
+          }
+        });
+        return upcomingMap;
+      } catch (error) {
+        console.error('スプレッドシートの取得に失敗しました:', error);
+        return {};
+      }
+    }
+
+    async function loadShops() {
       const container = document.getElementById('shop-container');
       const loading = document.getElementById('loading');
+
+      // スプレッドシートから出店予定データを取得
+      const upcomingMap = await fetchUpcomingData();
 
       // カードを生成
       shopData.forEach(item => {
@@ -138,22 +201,37 @@
           card.rel = 'noopener noreferrer';
         }
         
+        // このエリアに出店予定があるかチェック（部分一致でもOKにする）
+        let upcomingHtml = '';
+        for (const [sheetArea, locations] of Object.entries(upcomingMap)) {
+          if (item.name.includes(sheetArea) || sheetArea.includes(item.name)) {
+            if (locations !== '') {
+              upcomingHtml = `
+                <div class="upcoming-box">
+                  <span class="upcoming-label">出店予定エリア</span>
+                  <span class="upcoming-text">${locations}</span>
+                </div>
+              `;
+            }
+            break;
+          }
+        }
+
         card.innerHTML = `
           <div class="shop-area-name">${item.name}</div>
           <div class="shop-count-wrap">
             <span class="shop-count">${item.count}</span>
             <span class="shop-count-label">店舗</span>
           </div>
+          ${upcomingHtml}
         `;
         
         container.appendChild(card);
       });
 
       // ローディングを非表示にし、一覧を表示
-      setTimeout(() => {
-        loading.style.display = 'none';
-        container.style.display = 'grid';
-      }, 400); // 少しだけローディングアニメーションを見せる演出
+      loading.style.display = 'none';
+      container.style.display = 'grid';
     }
 
     // ページ読み込み時に実行
