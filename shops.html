@@ -72,34 +72,67 @@
       color: var(--text-mid);
       font-weight: 600;
     }
-    /* 出店予定のデザイン */
-    .upcoming-box {
-      margin-top: 16px;
-      background: #f0fdf4; /* 薄い緑色でポジティブな印象に */
-      border: 1px solid #bbf7d0;
-      border-radius: 6px;
-      padding: 10px 12px;
+    /* 出店予定セクションのデザイン */
+    .upcoming-section {
+      margin-top: 48px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1.5px solid rgba(30,58,138,0.08);
+      display: none; /* 初期は非表示 */
       width: 100%;
+    }
+    .upcoming-section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy-dark);
       text-align: center;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .upcoming-section-title::before {
+      content: '\f0a1'; /* fa-bullhorn */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--accent);
+    }
+    .upcoming-list {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      transition: all 0.2s ease;
+      gap: 12px;
     }
-    .shop-card:hover .upcoming-box {
-      background: #dcfce7;
-      border-color: #86efac;
+    .upcoming-item {
+      display: flex;
+      align-items: center;
+      background: var(--off-white);
+      padding: 16px 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--navy-light);
+      gap: 16px;
     }
-    .upcoming-label {
-      font-size: 0.65rem;
-      color: #166534;
+    @media (max-width: 500px) {
+      .upcoming-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+    .upcoming-item-area {
       font-weight: 700;
-      letter-spacing: 0.05em;
+      color: var(--navy-dark);
+      font-size: 0.95rem;
+      min-width: 140px;
     }
-    .upcoming-text {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #15803d;
+    .upcoming-item-loc {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+      flex: 1;
     }
     .loading-spinner {
       text-align: center;
@@ -134,6 +167,14 @@
     <div id="shop-container" class="shop-grid" style="display: none;">
       <!-- JS will dynamically inject shop cards here -->
     </div>
+
+    <!-- Upcoming Stores Section -->
+    <section id="upcoming-section" class="upcoming-section">
+      <h2 class="upcoming-section-title">出店予定のお知らせ</h2>
+      <ul class="upcoming-list" id="upcoming-list">
+        <!-- JS will dynamically inject upcoming list items here -->
+      </ul>
+    </section>
   </main>
 
   <footer class="contact-footer">
@@ -154,30 +195,37 @@
     // スプレッドシートのCSV公開URL
     const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpEBk3B-adUqt5KpcX83PsMozK-UwFx5e2BqjcAhc3w-Bi_xZUUqlkE1B347K-JFzC23IhuFAuQloJ/pub?output=csv';
 
-    // CSVをパースして { '関東エリア': '東京・神奈川', ... } の辞書を作る関数
+    // CSVをパースして出店予定の配列を作る関数
     async function fetchUpcomingData() {
       try {
         const res = await fetch(SPREADSHEET_CSV_URL);
-        if (!res.ok) return {};
+        if (!res.ok) return [];
         const csvText = await res.text();
         
-        // 簡単なCSVパース処理（改行で分割、カンマで分割）
-        const rows = csvText.split('\\n');
-        const upcomingMap = {};
+        let rows = csvText.split('\n');
+        
+        // 1行目のヘッダー（例: エリア名など）をスキップ
+        if (rows.length > 0 && rows[0].includes('エリア')) {
+          rows.shift();
+        }
+
+        // スプレッドシートの下の行（最新）が先になるように反転
+        rows.reverse();
+        
+        const upcomingList = [];
         
         rows.forEach(row => {
           const cols = row.split(',').map(col => col.replace(/^"|"$/g, '').trim());
-          // A列にエリア名、B列に出店予定地域が入っている想定
           if (cols.length >= 2) {
             const areaName = cols[0];
             const upcomingLocations = cols[1];
-            // ヘッダー行や空行を除外
-            if (areaName && upcomingLocations && !areaName.includes('エリア名')) {
-              upcomingMap[areaName] = upcomingLocations;
+            // 空行や説明文を除外
+            if (areaName && upcomingLocations && !areaName.includes('例：')) {
+              upcomingList.push({ area: areaName, locations: upcomingLocations });
             }
           }
         });
-        return upcomingMap;
+        return upcomingList;
       } catch (error) {
         console.error('スプレッドシートの取得に失敗しました:', error);
         return {};
@@ -189,7 +237,7 @@
       const loading = document.getElementById('loading');
 
       // スプレッドシートから出店予定データを取得
-      const upcomingMap = await fetchUpcomingData();
+      const upcomingList = await fetchUpcomingData();
 
       // カードを生成
       shopData.forEach(item => {
@@ -201,33 +249,33 @@
           card.rel = 'noopener noreferrer';
         }
         
-        // このエリアに出店予定があるかチェック（部分一致でもOKにする）
-        let upcomingHtml = '';
-        for (const [sheetArea, locations] of Object.entries(upcomingMap)) {
-          if (item.name.includes(sheetArea) || sheetArea.includes(item.name)) {
-            if (locations !== '') {
-              upcomingHtml = `
-                <div class="upcoming-box">
-                  <span class="upcoming-label">出店予定エリア</span>
-                  <span class="upcoming-text">${locations}</span>
-                </div>
-              `;
-            }
-            break;
-          }
-        }
-
         card.innerHTML = `
           <div class="shop-area-name">${item.name}</div>
           <div class="shop-count-wrap">
             <span class="shop-count">${item.count}</span>
             <span class="shop-count-label">店舗</span>
           </div>
-          ${upcomingHtml}
         `;
         
         container.appendChild(card);
       });
+
+      // 出店予定セクションの生成
+      const upcomingSection = document.getElementById('upcoming-section');
+      const upcomingUl = document.getElementById('upcoming-list');
+      
+      if (upcomingList.length > 0) {
+        upcomingList.forEach(item => {
+          const li = document.createElement('li');
+          li.className = 'upcoming-item';
+          li.innerHTML = `
+            <div class="upcoming-item-area">${item.area}</div>
+            <div class="upcoming-item-loc">${item.locations}</div>
+          `;
+          upcomingUl.appendChild(li);
+        });
+        upcomingSection.style.display = 'block';
+      }
 
       // ローディングを非表示にし、一覧を表示
       loading.style.display = 'none';
