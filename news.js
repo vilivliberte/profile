@@ -1,5 +1,5 @@
 /* ==========================================
-   Liberté FC - news.js
+   Liberte FC - news.js
    加盟店へのお知らせ ページ ロジック (スプレッドシート連携版)
    ========================================== */
 
@@ -53,6 +53,8 @@ async function fetchNewsData() {
       header: true,
       skipEmptyLines: true,
       complete: function(results) {
+        // スプレッドシートの下の行（最新）が上に表示されるように順番を反転
+        results.data.reverse();
         renderNewsCards(results.data);
       },
       error: function(error) {
