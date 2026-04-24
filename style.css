@@ -622,3 +622,22 @@ footer {
 .btn-submit:hover {
   background: var(--navy-mid);
 }
+
+/* ==========================================
+   UTILITIES
+   ========================================== */
+
+.nowrap-span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.br-sp {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .br-sp {
+    display: block;
+  }
+}
