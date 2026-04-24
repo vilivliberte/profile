@@ -595,12 +595,12 @@ body {
    ========================================== */
 
 .qualifications-card {
-  background: linear-gradient(135deg, var(--navy-dark) 0%, #1a2238 100%);
-  color: var(--white);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); /* Light blue gradient (sky-100 to sky-200) */
+  color: var(--navy-dark);
   border-radius: var(--radius);
   padding: 32px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--white);
 }
 
 .qualifications-list {
@@ -614,7 +614,7 @@ body {
   position: relative;
   padding-left: 20px;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.9);
+  color: var(--navy-dark);
   letter-spacing: 0.05em;
   line-height: 1.5;
 }
@@ -625,7 +625,7 @@ body {
   left: 0;
   top: 0;
   font-size: 0.6rem;
-  color: var(--gold);
+  color: #0284c7; /* Sky-600 */
   line-height: 2.2;
 }
 
