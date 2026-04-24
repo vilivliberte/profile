@@ -1,5 +1,5 @@
 /* ==========================================
-   Liberté Profile Site - style.css
+   Liberte Profile Site - style.css
    Brand: Navy Blue × White × Sky Blue
    ========================================== */
 
@@ -370,7 +370,6 @@ body {
 .card-photo-wrap {
   background: transparent !important;
   border-radius: 16px !important;
-  border: 2px solid var(--sky-mid);
 }
 
 .card-face-img {
