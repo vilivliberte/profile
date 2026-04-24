@@ -308,17 +308,21 @@
 }
 
 .financial-rate {
-  text-align: right;
-  font-size: 1rem;
-  font-weight: 600;
   background: var(--sky-light);
   border: 1px solid var(--sky);
-  padding: 12px 20px;
+  padding: 12px 16px;
   border-radius: var(--radius-xs);
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: baseline;
-  gap: 8px;
+  gap: 4px 8px;
+}
+
+.rate-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-dark);
 }
 
 .rate-value {
@@ -328,7 +332,29 @@
 }
 
 .rate-note {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: var(--text-mid);
+  white-space: nowrap;
+}
+
+/* Utilities */
+.nowrap-span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .highlight-box {
+    font-size: 0.85rem;
+    padding: 16px 12px;
+  }
+  .financial-rate {
+    padding: 10px;
+    gap: 2px 6px;
+  }
+  .rate-value {
+    font-size: 1.4rem;
+  }
 }
