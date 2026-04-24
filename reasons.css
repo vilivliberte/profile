@@ -1,0 +1,334 @@
+/* ==========================================
+   Liberte Profile Site - reasons.css
+   ========================================== */
+
+/* Header */
+.page-header {
+  width: 100%;
+  max-width: 540px;
+  background: var(--white);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--sky);
+  box-shadow: var(--shadow-xs);
+}
+
+.back-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+.page-title {
+  flex: 1;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-right: 40px; /* Balance the back btn to keep title centered */
+}
+
+/* Container */
+.reasons-container {
+  width: 100%;
+  max-width: 540px;
+  background: var(--off-white);
+  padding-bottom: 40px;
+}
+
+/* Illustrations */
+.illust-wrap {
+  text-align: center;
+  padding: 10px 16px 20px;
+}
+
+.illust-img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+}
+
+.illust-wrap-small {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.illust-img-small {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+}
+
+/* Sections */
+.reason-section, .coexistence-section, .financial-section {
+  padding: 0 16px;
+  margin-bottom: 40px;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.highlight-text {
+  color: #e63946;
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, #e63946, #ff7e67);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.reason-card {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 28px 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.reason-1 { border-top: 5px solid #0ea5e9; } /* Sky blue for customers */
+.reason-2 { border-top: 5px solid #10b981; } /* Emerald for era/society */
+.reason-3 { border-top: 5px solid #8b5cf6; } /* Purple for franchise ease */
+
+.reason-badge {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background: var(--navy-dark);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-xs);
+}
+
+.reason-1 .reason-badge { background: #0ea5e9; }
+.reason-2 .reason-badge { background: #10b981; }
+.reason-3 .reason-badge { background: #8b5cf6; }
+
+.reason-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-top: 8px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.reason-title span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.reason-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reason-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+.reason-list li::before {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+.reason-1 .reason-list li::before { color: #0ea5e9; }
+.reason-2 .reason-list li::before { color: #10b981; }
+.reason-3 .reason-list li::before { color: #8b5cf6; }
+
+/* Coexistence Section */
+.coexistence-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 5px solid var(--gold);
+  padding-left: 12px;
+}
+
+.coexistence-title i {
+  color: var(--gold);
+  font-size: 1.4rem;
+}
+
+.coexistence-content {
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+}
+
+.coexistence-content p {
+  margin-bottom: 14px;
+}
+
+.text-gold {
+  color: #b45309; /* Darker amber */
+}
+
+.highlight-box {
+  background: var(--sky-light);
+  border: 1.5px solid var(--sky-mid);
+  padding: 20px 16px;
+  border-radius: var(--radius-xs);
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--navy-dark);
+  line-height: 1.8;
+}
+
+.text-red {
+  color: #e63946;
+  font-size: 1.15rem;
+  padding: 0 4px;
+}
+
+/* Financial Section */
+.financial-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 5px solid var(--accent);
+  padding-left: 12px;
+}
+
+.financial-title i {
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+.financial-card {
+  background: var(--white);
+  border: 1px solid var(--sky-mid);
+  border-radius: var(--radius-sm);
+  padding: 28px 24px;
+  color: var(--navy-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.financial-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+.fin-label {
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+.fin-value {
+  font-weight: 700;
+  font-size: 1.3rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+  color: var(--navy-dark);
+}
+
+.fin-value small {
+  font-size: 0.85rem;
+  margin-left: 4px;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-mid);
+}
+
+.financial-divider {
+  height: 1px;
+  background: var(--sky-mid);
+  margin: 20px 0;
+}
+
+.profit-row {
+  margin-bottom: 24px;
+}
+
+.profit-row .fin-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+
+.highlight-profit {
+  color: #b45309;
+  font-size: 1.8rem;
+}
+
+.financial-rate {
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--sky-light);
+  border: 1px solid var(--sky);
+  padding: 12px 20px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.rate-value {
+  font-size: 1.6rem;
+  font-family: 'Inter', sans-serif;
+  color: #b45309;
+}
+
+.rate-note {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-mid);
+}
