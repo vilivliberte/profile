@@ -1,5 +1,5 @@
 /**
- * Liberté FC Profile Site - script.js
+ * Liberte FC Profile Site - script.js
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.menu-card').forEach(c => observer.observe(c));
 
   // ==========================================
-  // Password protection for "加盟店へのお知らせ"
+  // Password protection for "加盟店様へのお知らせ"
   // ==========================================
   const newsCard = document.getElementById('card-contact-owner');
   const modal = document.getElementById('password-modal');
