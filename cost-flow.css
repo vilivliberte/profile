@@ -1,0 +1,252 @@
+/* ==========================================
+   Liberte Profile Site - cost-flow.css
+   ========================================== */
+
+/* Header */
+.page-header {
+  width: 100%;
+  max-width: 540px;
+  background: var(--white);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--sky);
+  box-shadow: var(--shadow-xs);
+}
+
+.back-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity 0.2s;
+}
+
+.back-btn:hover { opacity: 0.8; }
+
+.page-title {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-right: 40px; 
+}
+
+/* Container */
+.cost-flow-container {
+  width: 100%;
+  max-width: 540px;
+  background: var(--off-white);
+  padding-bottom: 40px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.cost-section .section-title i { color: #f59e0b; }
+.flow-section .section-title i { color: #3b82f6; }
+
+/* Illustrations */
+.illust-wrap {
+  text-align: center;
+  padding: 0 16px 24px;
+}
+.illust-img {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+}
+
+/* Cost Cases */
+.cost-cases {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 16px;
+  margin-bottom: 30px;
+}
+.cost-case-card {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 28px 24px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  border: 1px solid var(--sky-mid);
+}
+.case-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-xs);
+  white-space: nowrap;
+}
+.case-badge-1 { background: #f59e0b; }
+.case-badge-2 { background: #ef4444; }
+
+.case-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+.case-price {
+  font-size: 2.2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+.case-price small {
+  font-size: 1rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  margin-left: 2px;
+  color: var(--text-mid);
+}
+
+/* Points List */
+.cost-points-list {
+  list-style: none;
+  padding: 0 16px;
+  margin-bottom: 40px;
+}
+.cost-points-list li {
+  background: var(--white);
+  border-radius: var(--radius-xs);
+  padding: 16px 16px 16px 42px;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  position: relative;
+  box-shadow: var(--shadow-xs);
+}
+.cost-points-list li::before {
+  content: '\f058'; /* check-circle */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 14px;
+  top: 17px;
+  color: #10b981;
+  font-size: 1.2rem;
+}
+.cost-points-list li strong {
+  color: #e63946;
+}
+
+/* Flow Section */
+.flow-lead {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+  padding: 0 16px;
+}
+
+.flow-steps {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-item {
+  width: 100%;
+  background: var(--white);
+  border: 1.5px solid var(--sky-mid);
+  border-radius: var(--radius-sm);
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-xs);
+  position: relative;
+  transition: transform 0.2s;
+}
+.step-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.step-num {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+  text-align: center;
+  flex-shrink: 0;
+  min-width: 64px;
+  box-shadow: var(--shadow-xs);
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  line-height: 1.4;
+}
+
+.step-desc {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  margin-top: 6px;
+  display: inline-block;
+  background: var(--sky-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.step-arrow {
+  font-size: 1.5rem;
+  color: var(--sky-mid);
+  margin: 6px 0;
+}
+
+.flow-summary {
+  margin: 32px 16px;
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: var(--radius-sm);
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--navy-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+.flow-summary i {
+  color: #ef4444;
+  margin-right: 8px;
+  font-size: 1.3rem;
+}
