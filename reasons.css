@@ -344,10 +344,17 @@
   white-space: nowrap;
 }
 
+.br-sp {
+  display: none;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 480px) {
+  .br-sp {
+    display: block;
+  }
   .highlight-box {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     padding: 16px 12px;
   }
   .financial-rate {
