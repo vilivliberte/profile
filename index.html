@@ -1,255 +1,193 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Liberte フランチャイズ FC本部代表 髙橋嘉人のプロフィールページ。株式会社ViliV・株式会社4410 代表取締役。" />
-  <title>髙橋 嘉人 | 代表プロフィール | Liberte FC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="profile.css" />
+  <meta name="description" content="Liberte フランチャイズ FC本部代表 髙橋嘉人 プロフィールサイト。セルフ脱毛・セルフホワイトニングのフランチャイズ本部。" />
+  <title>Liberte FC | 髙橋嘉人 代表プロフィール</title>
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- ===== BACK BUTTON ===== -->
-  <a href="index.html" class="back-btn" id="back-btn" aria-label="トップページへ戻る">
-    <span class="back-arrow">←</span>
-    <span>TOP</span>
-  </a>
+  <!-- ===== HERO SECTION ===== -->
+  <header class="hero" id="hero">
 
-  <!-- ===== HERO ===== -->
-  <section class="profile-hero" id="profile-hero">
-    <!-- Decorative background elements -->
-    <div class="hero-bg-circle hero-bg-circle--1"></div>
-    <div class="hero-bg-circle hero-bg-circle--2"></div>
-    <div class="hero-bg-orb"></div>
+    <!-- Profile card: photo + info -->
+    <div class="hero-profile" id="hero-profile">
 
-    <div class="hero-inner">
-
-      <!-- Photo -->
-      <div class="hero-photo-container" id="hero-photo">
-        <div class="photo-ring photo-ring--outer"></div>
-        <div class="photo-ring photo-ring--inner"></div>
-        <div class="photo-frame">
-          <img src="images/president.jpg" alt="髙橋 嘉人 代表取締役" class="president-photo" />
-        </div>
-        <div class="photo-badge">
-          <span>FC本部代表</span>
-        </div>
+      <!-- Logo (replacing photo position) -->
+      <div class="hero-photo-wrap hero-logo-wrap" id="photo-wrap">
+        <img src="images/logo.2.png" alt="Liberte ロゴ" />
       </div>
 
-      <!-- Name & Title -->
-      <div class="hero-text" id="hero-text">
-        <p class="hero-name-en">Takahashi &nbsp; Yoshito</p>
-        <h1 class="hero-name-ja">髙橋 嘉人</h1>
-        <div class="hero-divider">
-          <span></span><span class="divider-diamond">◆</span><span></span>
+      <!-- Info panel -->
+      <div class="hero-info" id="hero-info">
+        <span class="hero-title-badge">FC本部代表</span>
+
+        <div>
+          <p class="hero-name-en">Takahashi &nbsp; Yoshito</p>
+          <h1 class="hero-name-ja">髙橋 嘉人</h1>
         </div>
+
         <div class="hero-companies">
-          <div class="company-chip">
-            <span class="company-chip-name">株式会社 ViliV</span>
-            <span class="company-chip-role">代表取締役</span>
+          <div class="hero-company-item">
+            <span class="company-name">株式会社 ViliV</span>
+            <span class="company-role">代表取締役</span>
           </div>
-          <div class="company-chip">
-            <span class="company-chip-name">株式会社 4410</span>
-            <span class="company-chip-role">代表取締役</span>
+          <div class="hero-company-item">
+            <span class="company-name">株式会社 4410</span>
+            <span class="company-role">代表取締役</span>
           </div>
         </div>
       </div>
 
+    </div><!-- /.hero-profile -->
+
+    <!-- CTA Banner -->
+    <div class="hero-cta-banner" id="cta-banner">
+      まずはお気軽にお問い合わせください。
+      <strong>オンラインでのご説明も随時実施中！</strong>
     </div>
-  </section>
 
+  </header>
 
+  <!-- Section separator -->
+  <div class="section-title" id="menu-title" aria-hidden="true">
+    <div class="section-title-line"></div>
+    <span class="section-title-text">MENU</span>
+    <div class="section-title-line"></div>
+  </div>
 
-  <!-- ===== PROFILE BODY ===== -->
-  <main class="profile-body" id="profile-body">
+  <!-- ===== MENU GRID ===== -->
+  <main class="menu-section" id="menu-section">
+    <nav class="menu-grid" aria-label="メインメニュー">
 
-    <!-- Message from the President -->
-    <section class="profile-section reveal" id="section-message">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">MESSAGE</span>
-        <span class="label-line"></span>
-      </div>
-      <h2 class="section-heading">代表メッセージ</h2>
-      <div class="message-card">
-        <p class="message-text">
-          福井県内の小・中・高校を卒業後、近畿大学へ進学するも1年で中退。その後、大阪体育大学へ再入学し、卒業。<br /><br />
-          卒業後は福井市のフィットネスジムに就職し、3年間勤務したのち退職。独立を志し大阪へ渡り、7年間にわたり知識と経験を積む。<br /><br />
-          その後、地元・福井へ戻り、2016年に念願のパーソナルジムを開業。移転・拡大を経て順調に成長を続けていたが、コロナ禍の影響により約1年間、経営が大きく落ち込む。このままでは将来が立ち行かないと判断し、新たな挑戦として2021年に脱毛事業を開始。<br /><br />
-          翌2022年にはジム事業とあわせて法人化し、「無人セルフ業態」へと進化。さらに2023年にはセルフホワイトニングを導入し、店舗展開を加速させる。<br /><br />
-          知人の紹介をきっかけにフランチャイズ加盟を開始したことで、本事業モデルが全国展開可能であると確信。2025年1月より全国フランチャイズ展開を本格始動。<br /><br />
-          2026年4月現在、全国契約数20店舗（出店済12店舗）を達成。2029年には100店舗体制の構築を目指している。
-        </p>
-        <div class="message-sig">
-          <span class="sig-name">髙橋 嘉人</span>
-          <span class="sig-title">Liberte FC 代表</span>
+      <!-- 1: 代表プロフィール -->
+      <a href="profile.html" class="menu-card" id="card-profile" aria-label="代表プロフィール">
+        <div class="card-icon-wrap card-photo-wrap">
+          <img src="images/president.jpg" alt="髙橋 嘉人" class="card-face-img" />
         </div>
-      </div>
-    </section>
+        <span class="card-label">代表プロフィール</span>
+      </a>
 
-    <!-- Career -->
-    <section class="profile-section reveal" id="section-career">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">CAREER</span>
-        <span class="label-line"></span>
-      </div>
-      <h2 class="section-heading">経歴</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">1983</span>
-            <p class="timeline-desc">福井県福井市に生まれる</p>
-          </div>
+      <!-- 2: FC募集LP -->
+      <a href="https://liberte.hirameki7.site/" target="_blank" rel="noopener noreferrer" class="menu-card" id="card-member-lp" aria-label="FC募集LP">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-handshake flat-icon icon-handshake"></i>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2002</span>
-            <p class="timeline-desc">近畿大学入学<br /><small>2003年中退</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2004</span>
-            <p class="timeline-desc">大阪体育大学入学</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2008</span>
-            <p class="timeline-desc">大阪体育大学卒業<br /><small>フィットネスジムに就職（〜2010年）</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2010</span>
-            <p class="timeline-desc">独立を志し大阪へ</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2018</span>
-            <p class="timeline-desc">福井にてパーソナルトレーニングスタジオ KiRANオープン</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2021</span>
-            <p class="timeline-desc">コロナを機に脱毛事業に参入<br /><small>脱毛サロンLiberteオープン</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2022</span>
-            <p class="timeline-desc">株式会社4410設立<br /><small>「KiRAN」「Liberte」の運営を開始。<br
-                  class="br-desktop" />Liberteの無人化モデルを確立し多店舗展開へ</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2023</span>
-            <p class="timeline-desc">Liberteにセルフホワイトニングサービス導入</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2025</span>
-            <p class="timeline-desc">株式会社ViliV設立<br /><small>Liberteフランチャイズ本部として全国展開開始</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">現在</span>
-            <p class="timeline-desc">全国20店舗契約<br /><small>うち12店舗出店済</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2029</span>
-            <p class="timeline-desc">全国100店舗展開<br /><small>将来目標</small></p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <span class="card-label">FC募集LP</span>
+      </a>
 
-    <!-- Business -->
-    <section class="profile-section reveal" id="section-business">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">BUSINESS</span>
-        <span class="label-line"></span>
-      </div>
-      <h2 class="section-heading">パーソナルジムの事業について</h2>
-      <div class="business-grid">
-        <a href="https://kiran-bodymake.jp" target="_blank" rel="noopener noreferrer" class="biz-card biz-link">
-          <div class="biz-icon">🏋️</div>
-          <div class="biz-content">
-            <h3 class="biz-title">パーソナルトレーニングスタジオ KiRAN</h3>
-            <p class="biz-desc">身体づくりから美容まで。4410が運営する直営ジムで理想の体を実現。</p>
-            <span class="biz-link-text">公式サイトを見る &rarr;</span>
-          </div>
-        </a>
-      </div>
-    </section>
+      <!-- 3: Liberteが選ばれる理由 -->
+      <a href="reasons.html" class="menu-card" id="card-reason" aria-label="Liberteが選ばれる理由">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-star flat-icon icon-star"></i>
+        </div>
+        <span class="card-label">Liberteが<br>選ばれる理由</span>
+      </a>
 
-    <!-- Qualifications -->
-    <section class="profile-section reveal" id="section-qualifications">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">QUALIFICATIONS</span>
-        <span class="label-line"></span>
-      </div>
-      <h2 class="section-heading">所有資格</h2>
-      <div class="qualifications-card">
-        <ul class="qualifications-list">
-          <li>健康運動指導士</li>
-          <li>健康管理士一般指導員</li>
-          <li>健康管理能力検定1級</li>
-          <li>JCCAアドバンストトレーナー</li>
-          <li>SAQインストラクター</li>
-          <li>スポーツ心理士</li>
-          <li>中学・高校保健体育教員免許</li>
-          <li>高校福祉教員免許</li>
-          <li>調理師免許</li>
-          <li>食育インストラクター</li>
-          <li>青汁マイスター</li>
-        </ul>
-      </div>
-    </section>
+      <!-- 4: 初期費用とオープンまでの流れ -->
+      <a href="cost-flow.html" class="menu-card" id="card-first-store" aria-label="初期費用とオープンまでの流れ">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-yen-sign flat-icon icon-yen"></i>
+        </div>
+        <span class="card-label">初期費用と<br>オープンまでの流れ</span>
+      </a>
 
-    <!-- Contact CTA -->
-    <section class="profile-section reveal" id="section-cta">
-      <div class="cta-block">
-        <p class="cta-subtitle">フランチャイズ加盟・出店について</p>
-        <h2 class="cta-title">お気軽にご相談ください</h2>
-        <p class="cta-desc">オンラインでのご説明も随時実施中！<br />まずはお問い合わせください。</p>
-        <a href="index.html" class="cta-btn" id="cta-index-btn">
-          <span>TOP に戻る</span>
-          <span class="btn-arrow">→</span>
-        </a>
-      </div>
-    </section>
+      <!-- 5: 店舗一覧 -->
+      <a href="shops.html" class="menu-card" id="card-open-store" aria-label="店舗一覧">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-store flat-icon icon-store"></i>
+        </div>
+        <span class="card-label">店舗一覧</span>
+      </a>
 
+      <!-- 6: LP -->
+      <a href="#" class="menu-card" id="card-lp" aria-label="LP">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-clipboard-list flat-icon icon-lp"></i>
+        </div>
+        <span class="card-label">LP</span>
+      </a>
+
+      <!-- 7: HP -->
+      <a href="https://liberte-salon.net/" target="_blank" rel="noopener noreferrer" class="menu-card" id="card-hp" aria-label="HP（ホームページ）">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-globe flat-icon icon-hp"></i>
+        </div>
+        <span class="card-label">HP</span>
+      </a>
+
+      <!-- 8: Instagram -->
+      <a href="https://www.instagram.com/sln_liberte/" target="_blank" rel="noopener noreferrer" class="menu-card" id="card-instagram" aria-label="Instagram">
+        <span class="badge-new">NEW</span>
+        <div class="card-icon-wrap">
+          <i class="fa-brands fa-instagram flat-icon icon-instagram"></i>
+        </div>
+        <span class="card-label">Instagram</span>
+      </a>
+
+      <!-- 9: LINE -->
+      <a href="https://line.me/ti/p/~sln_lbrt" target="_blank" rel="noopener noreferrer" class="menu-card" id="card-line" aria-label="LINE">
+        <div class="card-icon-wrap">
+          <i class="fa-brands fa-line flat-icon icon-line"></i>
+        </div>
+        <span class="card-label">LINE</span>
+      </a>
+
+      <!-- 10: メール -->
+      <a href="mailto:info@4410-corp.jp" class="menu-card" id="card-mail" aria-label="メール">
+        <div class="card-icon-wrap">
+          <i class="fa-regular fa-envelope flat-icon icon-mail"></i>
+        </div>
+        <span class="card-label">メール</span>
+      </a>
+
+      <!-- 11: 弊社への営業・ご提案はコチラ -->
+      <a href="contact.html" class="menu-card" id="card-sales-general" aria-label="弊社への営業・ご提案はコチラ">
+        <div class="card-icon-wrap">
+          <i class="fa-solid fa-bullhorn flat-icon icon-sales"></i>
+        </div>
+        <span class="card-label">弊社への<br>営業・ご提案は<br>コチラ</span>
+      </a>
+
+      <!-- 12: 加盟店様へのお知らせ -->
+      <a href="news.html" class="menu-card" id="card-contact-owner" aria-label="加盟店様へのお知らせ">
+        <div class="card-icon-wrap">
+          <i class="fa-regular fa-bell flat-icon icon-bell"></i>
+        </div>
+        <span class="card-label">加盟店様への<br>お知らせ</span>
+      </a>
+
+    </nav>
   </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="profile-footer" id="profile-footer">
+  <footer id="footer">
     <img src="images/logo.png" alt="Liberte" class="footer-logo" />
     <p class="footer-text">
-      ※株式会社4410は Liberte直営店とパーソナルジムを運営<br />
-      ※株式会社ViliVは Liberteフランチャイズ本部を運営<br /><br />
+      ※株式会社4410は Liberte直営店とパーソナルジムを運営<br>
+      ※株式会社ViliVは Liberteフランチャイズ本部を運営<br><br>
       © 2024 Liberte Franchise. All rights reserved.
     </p>
   </footer>
 
-  <script src="profile.js"></script>
-</body>
+  <!-- ===== PASSWORD MODAL ===== -->
+  <div class="modal-overlay" id="password-modal">
+    <div class="modal-content">
+      <h3 class="modal-title">パスワード入力</h3>
+      <p class="modal-text">加盟店専用ページです。<br>パスワードを入力してください。</p>
+      <input type="password" id="modal-password-input" class="modal-input" placeholder="パスワード" />
+      <p id="modal-error-msg" class="modal-error"></p>
+      <div class="modal-actions">
+        <button id="modal-cancel-btn" class="modal-btn btn-cancel">キャンセル</button>
+        <button id="modal-submit-btn" class="modal-btn btn-submit">確認</button>
+      </div>
+    </div>
+  </div>
 
+  <script src="script.js"></script>
+</body>
 </html>
