@@ -125,6 +125,52 @@
   margin-left: 2px;
   color: var(--text-mid);
 }
+.case-note {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+/* Case Examples */
+.case-examples {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--sky-mid);
+  text-align: left;
+}
+.case-examples-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.case-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.case-example-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--sky-light);
+  border-radius: 8px;
+  padding: 12px 4px;
+  font-size: 0.75rem;
+  color: var(--navy-dark);
+  font-weight: 600;
+  text-align: center;
+}
+.case-example-img {
+  width: 100%;
+  max-width: 60px;
+  height: auto;
+  object-fit: contain;
+}
 
 /* Points List */
 .cost-points-list {
