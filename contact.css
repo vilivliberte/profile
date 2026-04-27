@@ -96,8 +96,19 @@ body {
   font-size: 0.85rem;
   color: var(--text-mid);
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   line-height: 1.6;
+}
+
+.contact-notice {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  background: var(--sky-light);
+  border-left: 3px solid var(--navy-light);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 28px;
+  line-height: 1.7;
 }
 
 /* Form Styles */
