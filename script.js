@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check password
     const checkPassword = () => {
       const password = modalInput.value;
-      if (password === "liberte4410") {
+      if (password === "123123") {
         window.location.href = "news.html";
       } else {
         modalError.textContent = "パスワードが違います。";
