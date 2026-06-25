@@ -165,32 +165,27 @@
   </style>
 </head>
 <body>
-
   <header class="contact-header">
     <a href="index.html" class="back-btn">
       <i class="fa-solid fa-chevron-left"></i> TOP
     </a>
     <img src="images/logo.png" alt="Liberte ロゴ" class="header-logo" />
   </header>
-
   <main class="contact-container">
     <h1 class="page-title">全国の店舗エリア</h1>
     <p class="page-desc">
       全国へ展開中のLiberte加盟店エリア一覧です。<br>
       各エリアをクリックすると、<br>公式サイトの店舗詳細へ遷移します。
     </p>
-
     <!-- Loading State -->
     <div id="loading" class="loading-spinner">
       <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
       <p style="margin-top: 16px; font-size: 0.9rem; font-weight: 600;">最新の店舗情報を読み込んでいます...</p>
     </div>
-
     <!-- Shop Grid -->
     <div id="shop-container" class="shop-grid" style="display: none;">
       <!-- JS will dynamically inject shop cards here -->
     </div>
-
     <!-- Upcoming Stores Section -->
     <section id="upcoming-section" class="upcoming-section">
       <h2 class="upcoming-section-title">出店予定のお知らせ</h2>
@@ -199,25 +194,76 @@
       </ul>
     </section>
   </main>
-
   <footer class="contact-footer">
     <p class="footer-text">© 2024 Liberte Franchise. All rights reserved.</p>
   </footer>
-
   <script>
-    // 公式サイトの店舗数は手動設定（Cloudflareブロック対策）
-    const shopData = [
+    // ===== 公式サイトから店舗データを自動取得 =====
+    const OFFICIAL_SHOP_URL = 'https://liberte-salon.net/shop/';
+    const CORS_PROXIES = [
+      'https://api.allorigins.win/raw?url=',
+      'https://corsproxy.io/?url=',
+    ];
+    // フォールバック用データ（自動取得に失敗した場合に使用）
+    const fallbackShopData = [
       { name: '北海道・東北エリア', count: '1', link: 'https://liberte-salon.net/shop/area/hokkaido-tohoku/' },
-      { name: '関東エリア', count: '0', link: '#' },
-      { name: '中部エリア', count: '8', link: 'https://liberte-salon.net/shop/area/chubu/' },
+      { name: '関東エリア', count: '1', link: 'https://liberte-salon.net/shop/area/kanto/' },
+      { name: '中部エリア', count: '9', link: 'https://liberte-salon.net/shop/area/chubu/' },
       { name: '近畿エリア', count: '0', link: '#' },
       { name: '中国・四国エリア', count: '3', link: 'https://liberte-salon.net/shop/area/chugoku-shikoku/' },
       { name: '九州・沖縄エリア', count: '0', link: '#' }
     ];
-
+    /**
+     * 公式HPのHTMLをパースして店舗エリアデータを抽出する
+     */
+    function parseShopDataFromHTML(html) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const shopItems = [];
+      // 各エリアの .PanelShopAreaList 要素を取得
+      const areas = doc.querySelectorAll('.PanelShopAreaList');
+      areas.forEach(area => {
+        const nameEl = area.querySelector('h3');
+        const countEl = area.querySelector('.LabelLarge');
+        const linkEl = area.closest('a');
+        if (nameEl && countEl) {
+          const href = linkEl ? linkEl.getAttribute('href') : '#';
+          const fullLink = (!href || href === '#')
+            ? '#'
+            : 'https://liberte-salon.net' + href;
+          shopItems.push({
+            name: nameEl.textContent.trim(),
+            count: countEl.textContent.trim(),
+            link: fullLink
+          });
+        }
+      });
+      return shopItems;
+    }
+    /**
+     * CORSプロキシ経由で公式HPを取得し、店舗データを返す
+     * 全プロキシ失敗時は null を返す
+     */
+    async function fetchShopDataFromHP() {
+      for (const proxy of CORS_PROXIES) {
+        try {
+          const url = proxy + encodeURIComponent(OFFICIAL_SHOP_URL);
+          const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+          if (!res.ok) continue;
+          const html = await res.text();
+          const items = parseShopDataFromHTML(html);
+          if (items.length > 0) {
+            console.log('✅ 公式HPから店舗データを取得しました（proxy:', proxy, '）');
+            return items;
+          }
+        } catch (e) {
+          console.warn('⚠️ プロキシ失敗:', proxy, e.message);
+        }
+      }
+      return null; // 全プロキシ失敗
+    }
     // スプレッドシートのCSV公開URL
     const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTpEBk3B-adUqt5KpcX83PsMozK-UwFx5e2BqjcAhc3w-Bi_xZUUqlkE1B347K-JFzC23IhuFAuQloJ/pub?output=csv';
-
     // CSVをパースして出店予定の配列を作る関数
     async function fetchUpcomingData() {
       try {
@@ -231,7 +277,6 @@
         if (rows.length > 0 && rows[0].includes('エリア')) {
           rows.shift();
         }
-
         // スプレッドシートの下の行（最新）が先になるように反転
         rows.reverse();
         
@@ -251,17 +296,20 @@
         return upcomingList;
       } catch (error) {
         console.error('スプレッドシートの取得に失敗しました:', error);
-        return {};
+        return [];
       }
     }
-
     async function loadShops() {
       const container = document.getElementById('shop-container');
       const loading = document.getElementById('loading');
-
-      // スプレッドシートから出店予定データを取得
-      const upcomingList = await fetchUpcomingData();
-
+      // 公式HPからの取得とスプレッドシート取得を並列実行
+      const [liveData, upcomingList] = await Promise.all([
+        fetchShopDataFromHP(),
+        fetchUpcomingData()
+      ]);
+      // 取得成功ならライブデータ、失敗ならフォールバックを使用
+      const isLive = liveData !== null;
+      const shopData = isLive ? liveData : fallbackShopData;
       // カードを生成
       shopData.forEach(item => {
         const card = document.createElement('a');
@@ -282,7 +330,13 @@
         
         container.appendChild(card);
       });
-
+      // データソース表示
+      const badge = document.createElement('div');
+      badge.style.cssText = 'text-align:center; margin-top:16px; font-size:0.75rem; font-weight:600; opacity:0.6;';
+      badge.innerHTML = isLive
+        ? '<i class="fa-solid fa-circle-check" style="color:#16a34a;"></i> 公式HPから自動取得'
+        : '<i class="fa-solid fa-triangle-exclamation" style="color:#d97706;"></i> キャッシュデータを表示中';
+      container.after(badge);
       // 出店予定セクションの生成
       const upcomingSection = document.getElementById('upcoming-section');
       const upcomingUl = document.getElementById('upcoming-list');
@@ -299,12 +353,10 @@
         });
         upcomingSection.style.display = 'block';
       }
-
       // ローディングを非表示にし、一覧を表示
       loading.style.display = 'none';
       container.style.display = 'grid';
     }
-
     // ページ読み込み時に実行
     document.addEventListener('DOMContentLoaded', loadShops);
   </script>
