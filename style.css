@@ -260,6 +260,30 @@ body {
   gap: 12px;
 }
 
+.section-title--kiran {
+  padding: 36px 4px 16px;
+}
+
+.section-title--kiran .section-title-line {
+  background: linear-gradient(90deg, #1f140e 0%, #c8a038 100%);
+  opacity: 0.55;
+}
+
+.section-title--kiran .section-title-text {
+  color: #1f140e;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.section-title--kiran .section-title-text::before,
+.section-title--kiran .section-title-text::after {
+  content: '✦';
+  color: #c8a038;
+  font-size: 0.62rem;
+  margin: 0 6px;
+  vertical-align: 1px;
+}
+
 .section-title-line {
   flex: 1;
   height: 1px;
@@ -273,7 +297,6 @@ body {
   font-weight: 600;
   letter-spacing: 0.2em;
   color: var(--navy);
-  text-transform: uppercase;
 }
 
 /* ==========================================
@@ -439,6 +462,76 @@ body {
 }
 
 /* ==========================================
+   KiRAN MENU CARD (White Base × 3 Distinct Tones)
+   ========================================== */
+
+.kiran-card {
+  background: var(--white);
+  border: 1.5px solid rgba(35, 20, 12, 0.08);
+  box-shadow: var(--shadow-xs);
+}
+
+.kiran-card::after {
+  background: linear-gradient(90deg, #23140c 0%, #c8a038 100%);
+}
+
+.kiran-card:hover {
+  border-color: rgba(200, 160, 56, 0.45);
+  box-shadow: 0 12px 32px rgba(35, 20, 12, 0.12);
+}
+
+/* White-based soft icon wrappers */
+.kiran-card .card-icon-wrap {
+  background: #f8f7f5;
+  border: 1px solid rgba(35, 20, 12, 0.06);
+}
+
+.kiran-card--hp:hover .card-icon-wrap {
+  background: #f1efec;
+}
+
+.kiran-card--insta .card-icon-wrap {
+  background: #fcfaf5;
+  border-color: rgba(200, 160, 56, 0.16);
+}
+
+.kiran-card--insta:hover .card-icon-wrap {
+  background: #f7f1e1;
+}
+
+.kiran-card--line .card-icon-wrap {
+  background: #faf8f5;
+  border-color: rgba(120, 90, 40, 0.12);
+}
+
+.kiran-card--line:hover .card-icon-wrap {
+  background: #f3ede4;
+}
+
+/* 1. HP: Chic Espresso Black */
+.icon-kiran-hp {
+  color: #23140c;
+}
+
+/* 2. Instagram: Champagne Gold Gradient */
+.icon-kiran-instagram {
+  background: linear-gradient(45deg, #8a6415 0%, #c8a038 50%, #e0b84c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3. LINE: Warm Bronze / Antique Brown-Gold */
+.icon-kiran-line {
+  background: linear-gradient(135deg, #3b2313 0%, #8b6520 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kiran-card .card-label {
+  color: var(--text-mid);
+}
+
+/* ==========================================
    FOOTER
    ========================================== */
 
@@ -506,6 +599,8 @@ footer {
   .card-icon       { font-size: 1.55rem; }
   .card-label      { font-size: 0.63rem; }
   .menu-card       { padding: 16px 8px 14px; }
+  .profile-banner-card { padding: 14px 18px; }
+  .sales-banner-card   { padding: 14px 16px; }
 }
 
 /* ==========================================
