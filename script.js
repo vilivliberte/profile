@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const x      = e.clientX - rect.left  - size / 2;
       const y      = e.clientY - rect.top   - size / 2;
 
+      const isKiran = this.classList.contains('kiran-card');
       Object.assign(ripple.style, {
         position:     'absolute',
         left:         x + 'px',
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width:        size + 'px',
         height:       size + 'px',
         borderRadius: '50%',
-        background:   'rgba(30,58,138,0.08)',
+        background:   isKiran ? 'rgba(212,175,55,0.22)' : 'rgba(30,58,138,0.08)',
         pointerEvents:'none',
         transform:    'scale(0)',
         animation:    'rippleAnim 0.55s ease forwards',
