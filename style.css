@@ -187,11 +187,12 @@ body {
 /* Profile info panel */
 .hero-info {
   flex: 1;
-  padding: 20px 18px 20px 20px;
+  min-width: 0;
+  padding: 24px 22px 24px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 9px;
+  gap: 10px;
   background: var(--white);
 }
 
@@ -228,7 +229,7 @@ body {
 .hero-companies {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .hero-company-item {
@@ -251,11 +252,13 @@ body {
 }
 
 .hero-company-note {
-  font-size: 0.52rem;
+  font-size: clamp(0.52rem, 2.2vw, 0.64rem);
   color: var(--text-soft);
-  line-height: 1.4;
-  letter-spacing: 0;
-  margin-top: 1px;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  margin-top: 3px;
+  padding-top: 6px;
+  border-top: 1px solid var(--sky);
   white-space: nowrap;
 }
 
@@ -781,13 +784,22 @@ footer {
    RESPONSIVE
    ========================================== */
 
+@media (max-width: 480px) {
+  .hero-photo-wrap     { flex: 0 0 37%; }
+  .hero-info           { padding: 18px 16px 18px 16px; gap: 8px; }
+  .hero-company-note   { font-size: clamp(0.5rem, 2.2vw, 0.58rem); line-height: 1.6; letter-spacing: 0.01em; margin-top: 2px; padding-top: 5px; }
+}
+
 @media (max-width: 400px) {
-  .hero-name-ja    { font-size: 1.45rem; }
-  .menu-grid       { gap: 10px; }
-  .card-icon-wrap  { width: 52px; height: 52px; }
-  .card-icon       { font-size: 1.55rem; }
-  .card-label      { font-size: 0.63rem; }
-  .menu-card       { padding: 16px 8px 14px; }
+  .hero-photo-wrap     { flex: 0 0 36%; }
+  .hero-info           { padding: 16px 12px 16px 14px; gap: 7px; }
+  .hero-name-ja        { font-size: 1.45rem; }
+  .hero-company-note   { font-size: clamp(0.48rem, 2.15vw, 0.54rem); letter-spacing: 0; }
+  .menu-grid           { gap: 10px; }
+  .card-icon-wrap      { width: 52px; height: 52px; }
+  .card-icon           { font-size: 1.55rem; }
+  .card-label          { font-size: 0.63rem; }
+  .menu-card           { padding: 16px 8px 14px; }
   .profile-banner-card { padding: 14px 18px; }
   .sales-banner-card   { padding: 14px 16px; }
 }
