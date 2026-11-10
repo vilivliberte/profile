@@ -9,245 +9,481 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="profile.css" />
 </head>
 
 <body>
 
-  <!-- ===== BACK BUTTON ===== -->
+  <!-- ===== FLOATING BACK BUTTON ===== -->
   <a href="index.html" class="back-btn" id="back-btn" aria-label="トップページへ戻る">
     <span class="back-arrow">←</span>
     <span>TOP</span>
   </a>
 
-  <!-- ===== HERO ===== -->
-  <section class="profile-hero" id="profile-hero">
-    <!-- Decorative background elements -->
-    <div class="hero-bg-circle hero-bg-circle--1"></div>
-    <div class="hero-bg-circle hero-bg-circle--2"></div>
-    <div class="hero-bg-orb"></div>
+  <main class="profile-container">
 
-    <div class="hero-inner">
+    <!-- ==========================================
+         01 / 07 : HERO & MESSAGE
+         ========================================== -->
+    <section class="slide slide--01" id="section-hero">
+      <div class="hero-top-area">
+        <!-- Top Brand Header -->
+        <header class="hero-brand-bar">
+          <a href="index.html" class="brand-logo-text">Liberte</a>
+          <span class="brand-page-title">代表プロフィール</span>
+        </header>
 
-      <!-- Photo -->
-      <div class="hero-photo-container" id="hero-photo">
-        <div class="photo-ring photo-ring--outer"></div>
-        <div class="photo-ring photo-ring--inner"></div>
-        <div class="photo-frame">
-          <img src="images/president.jpg" alt="髙橋 嘉人 代表取締役" class="president-photo" />
-        </div>
-        <div class="photo-badge">
-          <span>FC本部代表</span>
-        </div>
-      </div>
+        <!-- Hero Main Content -->
+        <div class="hero-main">
+          <div class="hero-text-col">
+            <h1 class="hero-name-ja">髙橋 嘉人</h1>
+            <p class="hero-name-en">YOSHITO TAKAHASHI</p>
 
-      <!-- Name & Title -->
-      <div class="hero-text" id="hero-text">
-        <p class="hero-name-en">Takahashi &nbsp; Yoshito</p>
-        <h1 class="hero-name-ja">髙橋 嘉人</h1>
-        <div class="hero-divider">
-          <span></span><span class="divider-diamond">◆</span><span></span>
-        </div>
-        <div class="hero-companies">
-          <div class="company-chip">
-            <span class="company-chip-name">株式会社 ViliV</span>
-            <span class="company-chip-role">代表取締役</span>
+            <p class="hero-role-lead">FC本部代表</p>
+
+            <div class="hero-company-list">
+              <div class="hero-company-row">
+                <span class="hc-name">株式会社ViliV</span>
+                <span class="hc-sep">|</span>
+                <span class="hc-role">代表取締役</span>
+              </div>
+              <div class="hero-company-row">
+                <span class="hc-name">株式会社4410</span>
+                <span class="hc-sep">|</span>
+                <span class="hc-role">代表取締役</span>
+              </div>
+            </div>
+
+            <p class="hero-catch">
+              地元・福井から、<br />
+              次の可能性へ。
+            </p>
           </div>
-          <div class="company-chip">
-            <span class="company-chip-name">株式会社 4410</span>
-            <span class="company-chip-role">代表取締役</span>
+
+          <div class="hero-photo-col">
+            <img src="images/president-cutout.png" alt="髙橋 嘉人 代表取締役" class="hero-president-img" />
           </div>
         </div>
       </div>
 
-    </div>
-  </section>
-
-
-
-  <!-- ===== PROFILE BODY ===== -->
-  <main class="profile-body" id="profile-body">
-
-    <!-- Message from the President -->
-    <section class="profile-section reveal" id="section-message">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">MESSAGE</span>
-        <span class="label-line"></span>
+      <!-- Dark Navy Message Box -->
+      <div class="hero-message-area">
+        <p class="en-label en-label--light">MESSAGE</p>
+        <h2 class="message-heading">新しい挑戦を、一つずつ。</h2>
+        <div class="message-body">
+          <p>
+            大阪体育大学を卒業後、フィットネス業界へ。<br />
+            福井・大阪で経験を積み、2016年に<br />
+            地元・福井でパーソナルジムを開業しました。
+          </p>
+          <p>
+            コロナ禍を機に脱毛事業に挑戦し、<br />
+            セルフホワイトニングの導入を経て、<br />
+            2025年からFC事業の全国展開を進めています。
+          </p>
+        </div>
       </div>
-      <h2 class="section-heading">代表メッセージ</h2>
-      <div class="message-card">
-        <p class="message-text">
-          福井県内の小・中・高校を卒業後、近畿大学へ進学するも1年で中退。その後、大阪体育大学へ再入学し、卒業。<br /><br />
-          卒業後は福井市のフィットネスジムに就職し、3年間勤務したのち退職。独立を志し大阪へ渡り、7年間にわたり知識と経験を積む。<br /><br />
-          その後、地元・福井へ戻り、2016年に念願のパーソナルジムを開業。移転・拡大を経て順調に成長を続けていたが、コロナ禍の影響により約1年間、経営が大きく落ち込む。このままでは将来が立ち行かないと判断し、新たな挑戦として2021年に脱毛事業を開始。<br /><br />
-          翌2022年にはジム事業とあわせて法人化し、「無人セルフ業態」へと進化。さらに2023年にはセルフホワイトニングを導入し、店舗展開を加速させる。<br /><br />
-          知人の紹介をきっかけにフランチャイズ加盟を開始したことで、本事業モデルが全国展開可能であると確信。2025年1月より全国フランチャイズ展開を本格始動。<br /><br />
-          2026年4月現在、全国契約数20店舗（出店済12店舗）を達成。2029年には100店舗体制の構築を目指している。
+    </section>
+
+    <!-- ==========================================
+         02 / 07 : CAREER
+         ========================================== -->
+    <section class="slide slide--02 reveal" id="section-career">
+      <div class="slide-inner">
+        <div class="section-header-line">
+          <span class="en-label">CAREER</span>
+        </div>
+
+        <h2 class="slide-title">
+          経験を重ねて、<br />
+          福井で独立。
+        </h2>
+        <p class="slide-lead">学びと現場経験を重ね、地元での開業へ。</p>
+
+        <!-- Vertical Timeline -->
+        <div class="career-timeline">
+          <div class="career-item">
+            <div class="career-year">1983</div>
+            <div class="career-dot"></div>
+            <div class="career-desc">福井県福井市に生まれる</div>
+          </div>
+
+          <div class="career-item">
+            <div class="career-year">2002</div>
+            <div class="career-dot"></div>
+            <div class="career-desc">
+              近畿大学へ入学<br />
+              <span>2003年に中退。</span>
+            </div>
+          </div>
+
+          <div class="career-item">
+            <div class="career-year">2004</div>
+            <div class="career-dot"></div>
+            <div class="career-desc">大阪体育大学へ入学</div>
+          </div>
+
+          <div class="career-item">
+            <div class="career-year">2008</div>
+            <div class="career-dot"></div>
+            <div class="career-desc">
+              大阪体育大学を卒業<br />
+              <span>福井市のフィットネスジムに就職。</span>
+            </div>
+          </div>
+
+          <div class="career-item">
+            <div class="career-year">2010</div>
+            <div class="career-dot"></div>
+            <div class="career-desc">
+              独立を志し、大阪へ<br />
+              <span>知識と経験を積む。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gym Photo -->
+        <div class="career-photo-wrap">
+          <img src="images/profile-gym.jpg" alt="パーソナルジムのダンベルとベンチ" class="career-photo" loading="lazy" />
+        </div>
+
+        <!-- 2016 Highlight Box -->
+        <div class="career-highlight-box">
+          <div class="ch-year">2016</div>
+          <div class="ch-divider"></div>
+          <div class="ch-content">
+            <h3 class="ch-title">福井でパーソナルジムを開業</h3>
+            <p class="ch-text">
+              パーソナルトレーニングスタジオ<br />
+              「KiRAN」をオープン。
+            </p>
+          </div>
+        </div>
+
+        <p class="career-footnote">小・中・高校時代は、福井県鯖江市で過ごしました。</p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         03 / 07 : BUSINESS
+         ========================================== -->
+    <section class="slide slide--03 reveal" id="section-business">
+      <div class="slide-inner slide-inner--top">
+        <div class="section-header-line">
+          <span class="en-label">BUSINESS</span>
+        </div>
+
+        <h2 class="slide-title">
+          転機から、<br />
+          新しい事業へ。
+        </h2>
+
+        <!-- 2x2 Business Grid -->
+        <div class="biz-matrix">
+          <div class="biz-cell">
+            <div class="biz-year">2021</div>
+            <h3 class="biz-cell-title">脱毛事業へ</h3>
+            <p class="biz-cell-desc">
+              約1年間の経営低迷を経て、<br />
+              脱毛サロン「Liberte」を開業。
+            </p>
+          </div>
+
+          <div class="biz-cell">
+            <div class="biz-year">2022</div>
+            <h3 class="biz-cell-title">株式会社4410 設立</h3>
+            <p class="biz-cell-desc">
+              「KiRAN」「Liberte」を運営。<br />
+              無人セルフモデルを確立し、<br />
+              多店舗展開へ。
+            </p>
+          </div>
+
+          <div class="biz-cell">
+            <div class="biz-year">2023</div>
+            <h3 class="biz-cell-title">サービスを拡充</h3>
+            <p class="biz-cell-desc">
+              セルフホワイトニングを導入。
+            </p>
+          </div>
+
+          <div class="biz-cell">
+            <div class="biz-year">2025</div>
+            <h3 class="biz-cell-title">株式会社ViliV 設立</h3>
+            <p class="biz-cell-desc">
+              1月からFC事業の<br />
+              全国展開を本格始動。
+            </p>
+          </div>
+        </div>
+
+        <p class="biz-summary-text">
+          知人の紹介をきっかけに始まったFC展開が、<br />
+          全国へと広がっています。
         </p>
-        <div class="message-sig">
-          <span class="sig-name">髙橋 嘉人</span>
-          <span class="sig-title">Liberte FC 代表</span>
+      </div>
+
+      <!-- Dark Navy Numbers Banner -->
+      <div class="biz-stats-banner">
+        <p class="stats-sub">2026年4月時点</p>
+        <div class="stats-row">
+          <div class="stats-item">
+            <span class="stats-num">20</span>
+            <span class="stats-unit">店舗契約</span>
+          </div>
+          <div class="stats-divider"></div>
+          <div class="stats-item">
+            <span class="stats-num">12</span>
+            <span class="stats-unit">店舗出店済</span>
+          </div>
+        </div>
+
+        <hr class="stats-hr" />
+
+        <p class="stats-sub">2029年の目標</p>
+        <div class="stats-goal">
+          <span class="goal-prefix">全国</span>
+          <span class="goal-num">100</span>
+          <span class="goal-suffix">店舗へ</span>
         </div>
       </div>
     </section>
 
-    <!-- Career -->
-    <section class="profile-section reveal" id="section-career">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">CAREER</span>
-        <span class="label-line"></span>
+    <!-- ==========================================
+         04 / 07 : PRIVATE / HOBBIES
+         ========================================== -->
+    <section class="slide slide--04 reveal" id="section-private">
+      <!-- Top Visual Collage -->
+      <div class="hobbies-hero-visual">
+        <img src="images/profile-hobbies.jpg" alt="PRIVATE / HOBBIES 実は、無趣味です…。 バイクとトライアスロン用品" class="hobbies-hero-img" loading="lazy" />
       </div>
-      <h2 class="section-heading">経歴</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">1983</span>
-            <p class="timeline-desc">福井県福井市に生まれる</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2002</span>
-            <p class="timeline-desc">近畿大学入学<br /><small>2003年中退</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2004</span>
-            <p class="timeline-desc">大阪体育大学入学</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2008</span>
-            <p class="timeline-desc">大阪体育大学卒業<br /><small>フィットネスジムに就職（〜2010年）</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2010</span>
-            <p class="timeline-desc">独立を志し大阪へ</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2016</span>
-            <p class="timeline-desc">福井にてパーソナルトレーニングスタジオ KiRANオープン</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2021</span>
-            <p class="timeline-desc">コロナを機に脱毛事業に参入<br /><small>脱毛サロンLiberteオープン</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2022</span>
-            <p class="timeline-desc">株式会社4410設立<br /><small>「KiRAN」「Liberte」の運営を開始。<br
-                  class="br-desktop" />Liberteの無人化モデルを確立し多店舗展開へ</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2023</span>
-            <p class="timeline-desc">Liberteにセルフホワイトニングサービス導入</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2025</span>
-            <p class="timeline-desc">株式会社ViliV設立<br /><small>Liberteフランチャイズ本部として全国展開開始</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">現在</span>
-            <p class="timeline-desc">全国20店舗契約<br /><small>うち12店舗出店済</small></p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2029</span>
-            <p class="timeline-desc">全国100店舗展開<br /><small>将来目標</small></p>
-          </div>
-        </div>
+
+      <!-- Middle White Content -->
+      <div class="hobbies-mid-area">
+        <p class="hobbies-lead-text">
+          独立する前は、バイクや筋トレが好きで、<br />
+          短い距離ですが、トライアスロンに<br />
+          出場したこともあります。
+        </p>
+
+        <h3 class="hobbies-sub-title">仕事中心の、10年ちょっと。</h3>
+        <p class="hobbies-body-text">
+          独立してからは仕事中心の生活になり、<br />
+          「趣味は何ですか？」と聞かれるたびに、<br />
+          答えに困ってしまいます。
+        </p>
+      </div>
+
+      <!-- Bottom Gray Area -->
+      <div class="hobbies-bottom-area">
+        <h3 class="hobbies-sub-title">最近は、誘われたら積極的に参加！</h3>
+        <p class="hobbies-body-text">
+          ゴルフや釣り、登山など、<br />
+          夢中になれる趣味を見つけたいと思っています。
+        </p>
+
+        <p class="hobbies-closing-call">
+          おすすめがあれば、<br />
+          ぜひ教えてください。
+        </p>
       </div>
     </section>
 
-    <!-- Business -->
-    <section class="profile-section reveal" id="section-business">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">BUSINESS</span>
-        <span class="label-line"></span>
+    <!-- ==========================================
+         05 / 07 : NEXT CHALLENGE
+         ========================================== -->
+    <section class="slide slide--05 reveal" id="section-challenge">
+      <div class="challenge-header">
+        <p class="en-label en-label--light">NEXT CHALLENGE</p>
+        <h2 class="challenge-title">
+          福井から全国へ。<br />
+          そして、海外へ。
+        </h2>
+        <p class="challenge-sub">最近の関心は、「海外進出」です。</p>
       </div>
-      <h2 class="section-heading">パーソナルジムの事業について</h2>
-      <div class="business-grid">
-        <a href="https://kiran-bodymake.jp" target="_blank" rel="noopener noreferrer" class="biz-card biz-link">
-          <div class="biz-icon">🏋️</div>
-          <div class="biz-content">
-            <h3 class="biz-title">パーソナルトレーニングスタジオ KiRAN</h3>
-            <p class="biz-desc">身体づくりから美容まで。4410が運営する直営ジムで理想の体を実現。</p>
-            <span class="biz-link-text">公式サイトを見る &rarr;</span>
+
+      <div class="challenge-photo-wrap">
+        <img src="images/profile-airport.jpg" alt="国際空港ロビー" class="challenge-photo" loading="lazy" />
+      </div>
+
+      <div class="challenge-body">
+        <p class="challenge-intro">
+          もともとは、福井県内で店舗を増やすことが<br />
+          目標でした。気づけば、当時は想像もして<br />
+          いなかったFC事業の全国展開へ。
+        </p>
+
+        <div class="challenge-topic">
+          <h3 class="challenge-topic-title">メイドインジャパンのマシンづくり。</h3>
+          <p class="challenge-topic-text">
+            全国展開を進める中で、<br />
+            オリジナル脱毛マシンも<br />
+            開発・製造することになりました。
+          </p>
+        </div>
+
+        <div class="challenge-topic">
+          <h3 class="challenge-topic-title">海外からのお声がけも。</h3>
+          <p class="challenge-topic-text">
+            最近は海外からもお声がけをいただき、<br />
+            海外進出も視野に入れて動いています。
+          </p>
+        </div>
+
+        <div class="challenge-short-line"></div>
+
+        <p class="challenge-closing">
+          まだまだ未知の領域。<br />
+          新しい可能性に、ワクワクしています。
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         06 / 07 : SPORTS
+         ========================================== -->
+    <section class="slide slide--06 reveal" id="section-sports">
+      <div class="slide-inner">
+        <div class="section-header-center">
+          <span class="center-line"></span>
+          <span class="en-label">SPORTS</span>
+          <span class="center-line"></span>
+        </div>
+
+        <h2 class="slide-title slide-title--center">
+          スポーツが、<br />
+          ずっと身近に。
+        </h2>
+        <p class="slide-lead slide-lead--center">
+          体育教師を目指していたこともあり、<br />
+          運動全般が好きです！
+        </p>
+
+        <!-- 2 Cards: Table Tennis & Judo -->
+        <div class="sports-cards-grid">
+          <div class="sport-card">
+            <div class="sport-img-wrap">
+              <img src="images/profile-tabletennis.jpg" alt="卓球ラケットとボール" class="sport-img" loading="lazy" />
+            </div>
+            <div class="sport-card-body">
+              <h3 class="sport-name">卓球</h3>
+              <p class="sport-achievement">インターハイ出場</p>
+            </div>
           </div>
-        </a>
+
+          <div class="sport-card">
+            <div class="sport-img-wrap">
+              <img src="images/profile-judo.jpg" alt="柔道着と黒帯" class="sport-img" loading="lazy" />
+            </div>
+            <div class="sport-card-body">
+              <h3 class="sport-name">柔道</h3>
+              <p class="sport-achievement">黒帯</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="sports-mid-text">
+          大学卒業後はフィットネスジムに勤務し、<br />
+          その後、パーソナルジムを開業。<br />
+          色々なスポーツやトレーニングに取り組んできました。
+        </p>
+
+        <!-- Sports History Table -->
+        <div class="sports-table" role="table" aria-label="取り組んできたスポーツ">
+          <div class="st-row st-header" role="row">
+            <div class="st-cell st-period" role="columnheader">時期</div>
+            <div class="st-cell st-activity" role="columnheader">取り組んできたスポーツ</div>
+          </div>
+          <div class="st-row" role="row">
+            <div class="st-cell st-period" role="cell">保育園〜小学校</div>
+            <div class="st-cell st-activity" role="cell">水泳</div>
+          </div>
+          <div class="st-row st-row--alt" role="row">
+            <div class="st-cell st-period" role="cell">小学校</div>
+            <div class="st-cell st-activity" role="cell">サッカー ／ 空手（茶帯）</div>
+          </div>
+          <div class="st-row" role="row">
+            <div class="st-cell st-period" role="cell">中学・高校</div>
+            <div class="st-cell st-activity" role="cell">卓球</div>
+          </div>
+          <div class="st-row st-row--alt" role="row">
+            <div class="st-cell st-period" role="cell">大学</div>
+            <div class="st-cell st-activity" role="cell">ボクシング ／ 柔道</div>
+          </div>
+          <div class="st-row" role="row">
+            <div class="st-cell st-period" role="cell">社会人</div>
+            <div class="st-cell st-activity" role="cell">筋トレ</div>
+          </div>
+        </div>
+
+        <p class="sports-footnote">ここ3年ほどは、サボり気味です…。</p>
       </div>
     </section>
 
-    <!-- Qualifications -->
-    <section class="profile-section reveal" id="section-qualifications">
-      <div class="section-label">
-        <span class="label-line"></span>
-        <span class="label-text">QUALIFICATIONS</span>
-        <span class="label-line"></span>
-      </div>
-      <h2 class="section-heading">所有資格</h2>
-      <div class="qualifications-card">
-        <ul class="qualifications-list">
-          <li>健康運動指導士</li>
-          <li>健康管理士一般指導員</li>
-          <li>健康管理能力検定1級</li>
-          <li>JCCAアドバンストトレーナー</li>
-          <li>SAQインストラクター</li>
-          <li>スポーツ心理士</li>
-          <li>中学・高校保健体育教員免許</li>
-          <li>高校福祉教員免許</li>
-          <li>調理師免許</li>
-          <li>食育インストラクター</li>
-          <li>青汁マイスター</li>
-        </ul>
-      </div>
-    </section>
+    <!-- ==========================================
+         07 / 07 : QUALIFICATIONS & CTA
+         ========================================== -->
+    <section class="slide slide--07 reveal" id="section-qualifications">
+      <div class="slide-inner slide-inner--top">
+        <div class="section-header-line">
+          <span class="en-label">QUALIFICATIONS</span>
+        </div>
 
-    <!-- Contact CTA -->
-    <section class="profile-section reveal" id="section-cta">
-      <div class="cta-block">
-        <p class="cta-subtitle">フランチャイズ加盟・出店について</p>
-        <h2 class="cta-title">お気軽にご相談ください</h2>
-        <p class="cta-desc">オンラインでのご説明も随時実施中！<br />まずはお問い合わせください。</p>
-        <a href="index.html" class="cta-btn" id="cta-index-btn">
-          <span>TOP に戻る</span>
-          <span class="btn-arrow">→</span>
+        <h2 class="slide-title">学びを、仕事の力に。</h2>
+        <p class="slide-lead">運動・健康・食・教育に関する資格と免許。</p>
+
+        <!-- 2 Columns: Exercise/Training & Health/Food -->
+        <div class="qual-grid">
+          <div class="qual-box">
+            <h3 class="qual-box-title">運動・トレーニング</h3>
+            <ul class="qual-list">
+              <li>健康運動指導士</li>
+              <li>JCCAアドバンスト<br />トレーナー</li>
+              <li>SAQインストラクター</li>
+              <li>スポーツ心理士</li>
+            </ul>
+          </div>
+
+          <div class="qual-box">
+            <h3 class="qual-box-title">健康・食</h3>
+            <ul class="qual-list">
+              <li>健康管理士一般指導員</li>
+              <li>健康管理能力検定1級</li>
+              <li>調理師免許</li>
+              <li>食育インストラクター</li>
+              <li>青汁マイスター</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="qual-edu-block">
+          <h3 class="qual-edu-title">教育</h3>
+          <ul class="qual-list qual-list--edu">
+            <li>中学・高校保健体育教員免許</li>
+            <li>高校福祉教員免許</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Navy CTA -->
+      <div class="final-cta-area">
+        <h2 class="final-cta-title">フランチャイズ加盟・出店のご相談</h2>
+        <p class="final-cta-desc">
+          お気軽にお問い合わせください。<br />
+          オンラインでのご説明も随時実施中です。
+        </p>
+
+        <a href="index.html" class="final-cta-btn" id="cta-index-btn">
+          <span>TOPに戻る</span>
+          <span class="final-cta-arrow">→</span>
         </a>
       </div>
     </section>
 
   </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="profile-footer" id="profile-footer">
-    <img src="images/logo.png" alt="Liberte" class="footer-logo" />
-    <p class="footer-text">
-      ※㈱4410は Liberte直営店とパーソナルジムを運営<br />
-      ※㈱ViliVは Liberteフランチャイズ本部を運営<br /><br />
-      © 2024 Liberte Franchise. All rights reserved.
-    </p>
-  </footer>
 
   <script src="profile.js"></script>
 </body>
