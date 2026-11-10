@@ -193,27 +193,47 @@ body {
 
 .hero-brand-bar {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 14px;
-  border-bottom: 1.5px solid var(--navy);
-  margin-bottom: 28px;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 4px;
+  padding-bottom: 18px;
+  margin-bottom: 24px;
 }
 
-.brand-logo-text {
+.brand-page-en {
   font-family: 'Inter', sans-serif;
-  font-size: 1.45rem;
-  font-weight: 800;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
   color: var(--navy);
-  text-decoration: none;
-  letter-spacing: -0.01em;
+  opacity: 0.65;
+  padding-left: 0.34em;
+}
+
+.brand-page-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.brand-title-line {
+  flex: 1;
+  height: 1.5px;
+  background: var(--navy);
+  position: relative;
 }
 
 .brand-page-title {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  letter-spacing: 0.06em;
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: 0.18em;
+  padding-left: 0.18em;
+  white-space: nowrap;
 }
 
 .hero-main {
@@ -603,12 +623,28 @@ body {
 .hobbies-hero-visual {
   width: 100%;
   background: var(--white);
+  position: relative;
+  overflow: hidden;
 }
 
 .hobbies-hero-img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.hobbies-layer-right {
+  position: relative;
+  z-index: 1;
+}
+
+.hobbies-layer-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
 .hobbies-mid-area {
@@ -978,18 +1014,49 @@ body {
 }
 
 /* ==========================================
-   SCROLL REVEAL ANIMATION
+   SCROLL & DIRECTIONAL SLIDE ANIMATIONS
    ========================================== */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  opacity: 1;
+  transform: none;
 }
 
-.reveal.is-visible {
+.slide-from-left,
+.slide-from-right,
+.slide-from-bottom {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s ease;
+}
+
+.slide-from-left {
+  transform: translate3d(-110px, 0, 0) scale(0.96);
+}
+
+.slide-from-right {
+  transform: translate3d(110px, 0, 0) scale(0.96);
+}
+
+.slide-from-bottom {
+  transform: translate3d(0, 32px, 0);
+}
+
+.sport-card.slide-from-left {
+  transform: translate3d(-110px, 12px, 0) rotate(-3deg) scale(0.95);
+}
+
+.sport-card.slide-from-right {
+  transform: translate3d(110px, 12px, 0) rotate(3deg) scale(0.95);
+}
+
+.slide-from-left.is-inview,
+.slide-from-right.is-inview,
+.slide-from-bottom.is-inview {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
 }
 
 /* ==========================================
