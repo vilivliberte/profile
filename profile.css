@@ -881,6 +881,16 @@ body {
 .st-row:not(.st-header) .st-activity {
   color: var(--navy);
   font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.st-subtext {
+  font-size: clamp(0.74rem, 2.7vw, 0.82rem);
+  font-weight: 400;
+  color: var(--text-soft);
+  line-height: 1.4;
 }
 
 .sports-footnote {
@@ -1063,6 +1073,32 @@ body {
    SMALL SCREEN REFINEMENTS
    ========================================== */
 
+@media (max-width: 480px) {
+  .slide-inner {
+    padding: 28px 20px 24px;
+  }
+
+  .slide-inner--top {
+    padding: 28px 20px 22px;
+  }
+
+  .section-header-center {
+    margin-bottom: 16px;
+  }
+
+  .slide-title {
+    margin-bottom: 10px;
+  }
+
+  .slide-lead {
+    margin-bottom: 18px;
+  }
+
+  .sports-cards-grid {
+    margin-bottom: 18px;
+  }
+}
+
 @media (max-width: 400px) {
   .slide-inner,
   .slide-inner--top,
@@ -1073,36 +1109,36 @@ body {
   .challenge-header,
   .challenge-body,
   .final-cta-area {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .hero-top-area {
-    padding: 20px 20px 0;
+    padding: 20px 18px 0;
   }
 
   .hero-photo-col {
-    right: -16px;
+    right: -14px;
     width: 55%;
   }
 
   .hero-main {
-    min-height: 300px;
+    min-height: 290px;
   }
 
   .career-item {
-    grid-template-columns: 62px 24px 1fr;
+    grid-template-columns: 60px 22px 1fr;
   }
 
   .career-item:not(:last-child)::after {
-    left: calc(62px + 11.5px);
+    left: calc(60px + 10.5px);
   }
 
   .biz-cell {
-    padding: 18px 14px;
+    padding: 16px 12px;
   }
 
   .qual-box {
-    padding: 16px 12px 20px;
+    padding: 14px 10px 18px;
   }
 }
