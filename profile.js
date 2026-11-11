@@ -70,17 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-inview');
           } else {
-            // Re-arm animation when element goes below the viewport so scrolling down again replays the left/right slide
+            // Re-arm animation when element is scrolled completely out below the viewport
             const rect = entry.boundingClientRect;
-            if (rect.top > window.innerHeight * 0.95) {
+            if (rect.top > window.innerHeight) {
               entry.target.classList.remove('is-inview');
             }
           }
         });
       },
       {
-        threshold: 0.14,
-        rootMargin: '0px 0px -6% 0px'
+        threshold: 0.05,
+        rootMargin: '50px 0px 50px 0px'
       }
     );
 
