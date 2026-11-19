@@ -530,9 +530,11 @@ body {
 }
 
 .biz-cell-desc {
-  font-size: clamp(0.76rem, 2.85vw, 0.85rem);
+  font-size: clamp(0.72rem, 2.7vw, 0.85rem);
   color: var(--text-mid);
   line-height: 1.65;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .biz-summary-text {
@@ -1082,6 +1084,10 @@ body {
     padding: 28px 20px 22px;
   }
 
+  .biz-cell {
+    padding: 16px 12px;
+  }
+
   .section-header-center {
     margin-bottom: 16px;
   }
@@ -1135,7 +1141,7 @@ body {
   }
 
   .biz-cell {
-    padding: 16px 12px;
+    padding: 14px 10px;
   }
 
   .qual-box {
